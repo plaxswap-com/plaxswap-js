@@ -1,0 +1,27 @@
+{
+  "name": "plaxswap",
+  "version": "0.1.0",
+  "description": "Official Plaxswap API client: accept crypto payments (hosted checkout, payment links, signed webhooks) and quote crypto swaps.",
+  "keywords": ["plaxswap", "crypto payments", "crypto payment gateway", "payment gateway", "bitcoin", "usdt", "stablecoin", "webhooks", "crypto swap", "api client"],
+  "homepage": "https://plaxswap.com/developers/payments",
+  "bugs": { "url": "https://github.com/plaxswap-com/plaxswap-js/issues", "email": "support@plaxswap.com" },
+  "repository": { "type": "git", "url": "git+https://github.com/plaxswap-com/plaxswap-js.git" },
+  "license": "MIT",
+  "author": "Plaxswap <support@plaxswap.com> (https://plaxswap.com)",
+  "type": "module",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/esm/index.d.ts",
+  "exports": {
+    ".": { "types": "./dist/esm/index.d.ts", "import": "./dist/esm/index.js", "require": "./dist/cjs/index.js" },
+    "./webhooks": { "types": "./dist/esm/webhooks.d.ts", "import": "./dist/esm/webhooks.js", "require": "./dist/cjs/webhooks.js" }
+  },
+  "files": ["dist", "README.md", "LICENSE"],
+  "engines": { "node": ">=18" },
+  "sideEffects": false,
+  "scripts": {
+    "build": "rm -rf dist && tsc -p tsconfig.json && tsc -p tsconfig.cjs.json && echo '{\"type\":\"commonjs\"}' > dist/cjs/package.json",
+    "test": "npm run build && node --test test/"
+  },
+  "devDependencies": { "typescript": "5.6.3", "@types/node": "20.14.10" }
+}
